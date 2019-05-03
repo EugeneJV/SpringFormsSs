@@ -36,4 +36,9 @@ public class MainController {
         return new Car();
     }
 
+    @GetMapping("/rest")
+    public String rest(){
+        return "rest";
+    }
+
 }

@@ -25,15 +25,5 @@
             <input type="submit">
         </sm:form>
 
-        <%--<form action="/save/user" method="post">--%>
-        <%--<input type="text" name="name" placeholder="name">--%>
-        <%--<input type="submit">--%>
-        <%--</form>--%>
-
-        <%--<form action="/save/car" method="post">--%>
-        <%--<input type="text" name="model" placeholder="model">--%>
-        <%--<input type="submit">--%>
-        <%--</form>--%>
-
 </body>
 </html>
