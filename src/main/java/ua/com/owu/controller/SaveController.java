@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import ua.com.owu.service.RegUserService;
+import ua.com.owu.service.car.CarServiceImpl;
 import ua.com.owu.service.user.UserService;
+import ua.com.owu.service.user.editor.UserEditor;
 import ua.com.owu.service.user.validator.UserValidator;
 import ua.com.owu.entity.Car;
 import ua.com.owu.entity.User;
@@ -33,6 +36,14 @@ public class SaveController {
         dataBinder.addValidators(userValidator);
     }
 
+    @Autowired
+    private UserEditor userEditor;
+
+    @InitBinder("carModel")
+    public void binder2(WebDataBinder dataBinder){
+        dataBinder.registerCustomEditor(User.class, userEditor);
+    }
+
     @PostMapping("/user")
     public String saveUser(@ModelAttribute ("userModel") @Validated User user, BindingResult bindingResult){
         if (bindingResult.hasErrors()){
@@ -50,8 +61,9 @@ public class SaveController {
     }
 
     @PostMapping("/car/user")
-    public String mergeSaveCarUser(@ModelAttribute Car carModel) {
+    public String mergeSaveCarUser(@ModelAttribute ("carModel") Car carModel) {
         carService.save(carModel);
+        System.out.println("rrrrr");
         return "index";
     }
 

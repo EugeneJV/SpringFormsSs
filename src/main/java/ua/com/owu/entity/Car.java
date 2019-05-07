@@ -9,7 +9,7 @@ public class Car {
     private int id;
     private String model;
 
-    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     @JoinTable(
             name = "user_ref_car",
             joinColumns = @JoinColumn(name = "car_id"),
